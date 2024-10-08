@@ -6,6 +6,39 @@
     <title>Document</title>
 </head>
 <body>
+    <script>
+    function ticket(){
+        return new Promise((resolve)=>{
+            setTimeout(()=>{
+                console.log("ticket booked")
+                resolve()
+            },10000)
+        })  
+    }
+    function theatre(){
+        return new Promise((resolve)=>{
+            setTimeout(()=>{
+                console.log("reached to theatre")
+                resolve()
+            },7000)
+        }) 
+    }
+    function movie(){
+        return new Promise((resolve)=>{
+            setTimeout(()=>{
+                console.log("movie watched")
+                resolve()
+            },5000)
+        }) 
+    }
+    function review(){
+            console.log("good")
+        }
+    ticket()
+    .then (()=>theatre())
+    .then(()=>movie())
+    .then(()=>review())
+</script>
     
 </body>
 </html>

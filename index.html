@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise for GAYAMMA</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script&display=swap');
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fce4ec;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            padding: 20px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .form-container {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label, input {
+            font-size: 1.2rem;
+        }
+
+        input {
+            padding: 8px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #ff4081;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #e91e63;
+        }
+
+        .name-container h1 {
+            font-size: 3rem;
+            color: #ff4081;
+            font-family: 'Pacifico', cursive;
+            margin: 20px;
+        }
+
+        .hearts {
+            font-size: 2rem;
+            color: red;
+        }
+
+        /* Letter Page Styles */
+        .letter-container {
+            display: none;
+            position: relative;
+            width: 100%;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            border: 2px solid #ff6f91;
+            overflow: hidden;
+        }
+
+        .letter-top, .letter-bottom {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            left: 0;
+            background-color: white;
+            z-index: 2;
+            transition: transform 2s ease;
+        }
+
+        .letter-top {
+            top: 0;
+        }
+
+        .letter-bottom {
+            bottom: 0;
+        }
+
+        .scissor-icon {
+            font-size: 2rem;
+            cursor: pointer;
+            color: red;
+            margin-top: 10px;
+            z-index: 5;
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .cut-animation .letter-top {
+            transform: translateY(-100%);
+        }
+
+        .cut-animation .letter-bottom {
+            transform: translateY(100%);
+        }
+
+        /* Quotes Styles */
+        .quotes-container {
+            display: none;
+            position: relative;
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid #ff6f91;
+            border-radius: 10px;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            font-family: 'Dancing Script', cursive;
+            color: #ff4081;
+        }
+
+        .heart {
+            font-size: 2rem;
+            color: #ff6f91;
+        }
+
+        /* Static Image Placement Styles */
+        .image-container {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            pointer-events: none; /* Prevent interaction */
+        }
+
+        .image-container img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            position: absolute;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .button{
+          justify-content: center;  
+        }
+
+        /* Positioning Images Around the Quotes */
+        .image1 { top: 10%; left: 20%; }
+        .image2 { top: 10%; right: 20%; }
+        .image3 { bottom: 10%; left: 20%; }
+        .image4 { bottom: 10%; right: 20%; }
+        .image5 { top: 50%; left: 5%; transform: translateY(-50%); }
+        .image6 { top: 50%; right: 5%; transform: translateY(-50%); }
+        .image7 { bottom: 5%; left: 50%; transform: translateX(-50%); }
+        .image8 { top: 5%; left: 50%; transform: translateX(-50%); }
+
+        /* Next page button */
+        #nextPageBtn {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #nextPageBtn:hover {
+            background-color: #e91e63;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Page 1: Form to Ask for Name and DOB -->
+        <div class="form-container" id="formContainer">
+            <h2>Enter Your Name and Date of Birth</h2>
+            <form id="userForm" onsubmit="goToLetterPage(event)">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" required><br>
+
+                <label for="dob">Your Date of Birth:</label>
+                <input type="date" id="dob" required><br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Letter Section -->
+        <div class="letter-container" id="letterContainer">
+            <div class="letter-top"></div>
+            <div class="letter-bottom"></div>
+            <div class="letter-content">
+                <p>Dear <span id="letterName"></span>, I have something special for you!</p>
+                <div class="scissor-icon" onclick="cutLetter()">✂️ Cut Here</div>
+            </div>
+        </div>
+        <!-- Letter Section -->
+<div class="letter-container" id="letterContainer">
+    <div class="letter-top"></div>
+    <div class="letter-bottom"></div>
+    <div class="letter-content">
+        <p>Dear <span id="letterName"></span>, I have something special for you!</p>
+        <div class="scissor-icon" onclick="cutLetter()">✂ Cut Here</div>
+    </div>
+</div>
+
+<!-- Quotes Section (Updated to include the video after images) -->
+<div class="quotes-container" id="quotesContainer" style="display: none;">
+    <h1>🎉 Happy Birthday, <span id="sisterGreeting"></span>! 🎉</h1>
+    <p class="quote">“Sisters are different flowers from the same garden.”</p>
+    <p class="quote">“A sister is both your mirror and your opposite.”</p>
+    <p class="quote">“A sister is a little bit of childhood that can never be lost.”</p>
+    <p class="quote">Gayamma, many more happy returns of the day! Enjoy the day, stay blessed! Maa loves you so much, potti. ❤</p>
+    <div class="heart">❤ With all my love! ❤</div>
+
+    <!-- Video Section (Embed the video within the quotes section) -->
+    <div class="embed-responsive embed-responsive-16by9" id="videoContainer">
+        <iframe class="embed-responsive-item" src="./birth_video.mp4" allowfullscreen></iframe>
+    </div>
+
+    <!-- Button to move to the next page -->
+    
+</div>
+<button id="nextPageBtn" class="m-5 button"onclick="goToNextPage()">Next Page</button>
+
+<!-- Image Container (Images placed around the quotes) -->
+<div class="image-container" id="imageContainer" style="display: none;">
+    <img src="./images/12.jpg" alt="Image 1" class="image1">
+    <img src="./images/7.jpg" alt="Image 2" class="image2">
+    <img src="./images/2.jpg" alt="Image 3" class="image3">
+    <img src="./images/6.jpg" alt="Image 4" class="image4">
+    <img src="./images/6.jpg" alt="Image 5" class="image5">
+    <img src="./images/12.jpg" alt="Image 6" class="image6">
+    <img src="./images/7.jpg" alt="Image 7" class="image7">
+    <img src="./images/2.jpg" alt="Image 8" class="image8">
+</div>
+
+<script>
+    // Cut Letter Animation
+    function cutLetter() {
+        const letterContainer = document.getElementById("letterContainer");
+        letterContainer.classList.add("cut-animation");
+
+        // Ensure the animation finishes before moving to the next part
+        setTimeout(function() {
+            showImagesAndQuotes(); // Show images, quotes, and video
+        }, 2000); // Delay matches the animation duration
+    }
+
+    // Show Images, Quotes, and Video
+    function showImagesAndQuotes() {
+        // Display images
+        document.getElementById("imageContainer").style.display = "block";
+        // Display quotes
+        document.getElementById("quotesContainer").style.display = "block";
+        // Display video (already included in the quotes container)
+        document.getElementById("videoContainer").style.display = "block";
+
+        // Hide letter section after animation
+        document.getElementById("letterContainer").style.display = "none";
+    }
+
+    // Go to Next Page
+    
+</script>
+    </div>
+
+    <script>
+        // Go to Letter Page
+        function goToLetterPage(event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const dob = document.getElementById("dob").value;
+
+            if (name && dob) {
+                document.getElementById("formContainer").style.display = "none";
+                document.getElementById("letterContainer").style.display = "block";
+                document.getElementById("letterName").innerText = name;
+            }
+        }
+
+        // Cut Letter Animation
+        function cutLetter() {
+            const letterContainer = document.getElementById("letterContainer");
+            letterContainer.classList.add("cut-animation");
+            setTimeout(showImages, 2000); // Show images after cut animation
+        }
+
+        // Show Images and Quotes
+        function showImages() {
+            document.getElementById("imageContainer").style.display = "block";
+            document.getElementById("quotesContainer").style.display = "block";
+            document.getElementById("nextPageBtn").style.display = "block";
+
+            // Hide letter section
+            document.getElementById("letterContainer").style.display = "none";
+        }
+
+        // Go to Next Page
+        function goToNextPage() {
+            alert("More quotes will be added here soon!");
+            // Implement logic for displaying more quotes or any other action.
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise for GAYAMMA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script&display=swap');
+
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fce4ec;
+        }
+
+        /* Container for the entire content */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Input form */
+        .form-container {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label, input {
+            font-size: 1.2rem;
+        }
+
+        input {
+            padding: 8px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #ff4081;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #e91e63;
+        }
+
+        /* Name Styles */
+        .name-container h1 {
+            font-size: 3rem;
+            color: #ff4081;
+            font-family: 'Pacifico', cursive;
+            margin: 20px;
+        }
+
+        .hearts {
+            font-size: 2rem;
+            color: red;
+        }
+
+        /* Letter Page Styles */
+        .letter-container {
+            display: none;
+            position: relative;
+            width: 100%;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            border: 2px solid #ff6f91;
+            overflow: hidden;
+        }
+
+        .letter-top, .letter-bottom {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            left: 0;
+            background-color: white;
+            z-index: 2;
+            transition: transform 2s ease; /* Add smooth transition */
+        }
+
+        .letter-top {
+            top: 0;
+        }
+
+        .letter-bottom {
+            bottom: 0;
+        }
+
+        .scissor-icon {
+            font-size: 2rem;
+            cursor: pointer;
+            color: red;
+            margin-top: 10px;
+            z-index: 5;
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        /* Animation when cutting */
+        .cut-animation .letter-top {
+            transform: translateY(-100%); /* Move up */
+        }
+
+        .cut-animation .letter-bottom {
+            transform: translateY(100%); /* Move down */
+        }
+
+        /* Quotes and Live Calculator */
+        .quotes-container {
+            display: none;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid #ff6f91;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            font-family: 'Dancing Script', cursive;
+            color: #ff4081;
+        }
+
+        .heart {
+            font-size: 2rem;
+            color: #ff6f91;
+        }
+
+        .live-counter {
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+
+        /* Slideshow styles */
+        .slideshow-container {
+            display: none;
+            max-width: 100%;
+            position: relative;
+            margin: 20px auto;
+        }
+
+        .slides {
+            display: none;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            object-fit: cover; /* Ensure the image covers the container without distortion */
+            height: auto;
+            max-height: 500px;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Video section */
+        #birthdayVideo {
+            display: none;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Page 1: Form to Ask for Name and DOB -->
+        <div class="form-container" id="formContainer">
+            <h2>Enter Your Name and Date of Birth</h2>
+            <form id="userForm" onsubmit="goToLetterPage(event)">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" required><br>
+
+                <label for="dob">Your Date of Birth:</label>
+                <input type="date" id="dob" required><br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Letter Section -->
+        <div class="letter-container" id="letterContainer">
+            <div class="letter-top"></div>
+            <div class="letter-bottom"></div>
+            <div class="letter-content">
+                <p>Dear <span id="letterName"></span>, I have something special for you!</p>
+                <div class="scissor-icon" onclick="cutLetter()">✂️ Cut Here</div>
+            </div>
+        </div>
+
+        <!-- Slideshow Section -->
+        <div class="slideshow-container" id="slideshowContainer">
+            <img class="slides" src="C:/Users/bhanu/OneDrive/Desktop/birth/14.jpg" alt="Slide 1">
+            <img class="slides" src="C:/Users/bhanu/OneDrive/Desktop/birth/7.jpg" alt="Slide 2">
+            <img class="slides" src="C:/Users/bhanu/OneDrive/Desktop/birth/2.jpg" alt="Slide 3">
+
+            <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+            <a class="next" onclick="changeSlide(1)">&#10095;</a>
+        </div>
+
+        <!-- Birthday Video -->
+        <video id="birthdayVideo" controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Quotes and Live Calculator Section -->
+        <div class="quotes-container" id="quotesContainer">
+            <div class="live-counter" id="liveCounter"></div>
+            <h1>🎉 Happy Birthday, <span id="sisterName"></span>! 🎉</h1>
+            <div class="quote">"Count your life by smiles, not tears. Count your age by friends, not years."</div>
+            <div class="quote">"The more you praise and celebrate your life, the more there is in life to celebrate."</div>
+            <div class="quote">"On this special day, I wish you all the very best, all the joy you can ever have."</div>
+            <div class="heart">💖 💖 💖</div>
+        </div>
+    </div>
+
+    <script>
+        // Function to navigate to the letter page
+        function goToLetterPage(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            document.getElementById('letterName').innerText = name;
+            document.getElementById('sisterName').innerText = name;
+            document.getElementById('formContainer').style.display = 'none';
+            document.getElementById('letterContainer').style.display = 'block';
+        }
+
+        // Function to cut the letter
+        function cutLetter() {
+            const letterContainer = document.getElementById('letterContainer');
+            letterContainer.classList.add('cut-animation');
+            setTimeout(() => {
+                document.getElementById('quotesContainer').style.display = 'block';
+                document.getElementById('slideshowContainer').style.display = 'block';
+                startSlideshow();
+            }, 2000);
+        }
+
+        // Slideshow functionality
+        let slideIndex = 0;
+        function showSlides(n) {
+            const slides = document.getElementsByClassName('slides');
+            if (n >= slides.length) { slideIndex = 0; }
+            if (n < 0) { slideIndex = slides.length - 1; }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
+            }
+            slides[slideIndex].style.display = 'block';
+        }
+
+        function startSlideshow() {
+            showSlides(slideIndex);
+            setInterval(() => {
+                slideIndex++;
+                showSlides(slideIndex);
+            }, 3000);
+        }
+
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+    </script>
+</body>
+</html>
