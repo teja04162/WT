@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Surprise for GAYAMMA</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script&display=swap');
 
@@ -17,6 +25,11 @@
             padding: 0;
             background-color: #fce4ec;
             overflow: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: pink;
         }
 
         .container {
@@ -34,7 +47,8 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        label, input {
+        label,
+        input {
             font-size: 1.2rem;
         }
 
@@ -83,7 +97,8 @@
             overflow: hidden;
         }
 
-        .letter-top, .letter-bottom {
+        .letter-top,
+        .letter-bottom {
             position: absolute;
             width: 100%;
             height: 50%;
@@ -155,7 +170,8 @@
             right: 0;
             bottom: 0;
             z-index: 1;
-            pointer-events: none; /* Prevent interaction */
+            pointer-events: none;
+            /* Prevent interaction */
         }
 
         .image-container img {
@@ -166,19 +182,55 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .button{
-          justify-content: center;  
+
+        .button {
+            justify-content: center;
         }
 
         /* Positioning Images Around the Quotes */
-        .image1 { top: 10%; left: 20%; }
-        .image2 { top: 10%; right: 20%; }
-        .image3 { bottom: 10%; left: 20%; }
-        .image4 { bottom: 10%; right: 20%; }
-        .image5 { top: 50%; left: 5%; transform: translateY(-50%); }
-        .image6 { top: 50%; right: 5%; transform: translateY(-50%); }
-        .image7 { bottom: 5%; left: 50%; transform: translateX(-50%); }
-        .image8 { top: 5%; left: 50%; transform: translateX(-50%); }
+        .image1 {
+            top: 10%;
+            left: 20%;
+        }
+
+        .image2 {
+            top: 10%;
+            right: 20%;
+        }
+
+        .image3 {
+            bottom: 10%;
+            left: 20%;
+        }
+
+        .image4 {
+            bottom: 10%;
+            right: 20%;
+        }
+
+        .image5 {
+            top: 50%;
+            left: 5%;
+            transform: translateY(-50%);
+        }
+
+        .image6 {
+            top: 50%;
+            right: 5%;
+            transform: translateY(-50%);
+        }
+
+        .image7 {
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .image8 {
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
         /* Next page button */
         #nextPageBtn {
@@ -197,6 +249,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Page 1: Form to Ask for Name and DOB -->
@@ -223,74 +276,79 @@
             </div>
         </div>
         <!-- Letter Section -->
-<div class="letter-container" id="letterContainer">
-    <div class="letter-top"></div>
-    <div class="letter-bottom"></div>
-    <div class="letter-content">
-        <p>Dear <span id="letterName"></span>, I have something special for you!</p>
-        <div class="scissor-icon" onclick="cutLetter()">✂ Cut Here</div>
-    </div>
-</div>
+        <div class="letter-container" id="letterContainer">
+            <div class="letter-top"></div>
+            <div class="letter-bottom"></div>
+            <div class="letter-content">
+                <p>Dear <span id="letterName"></span>, I have something special for you!</p>
+                <div class="scissor-icon" onclick="cutLetter()">✂ Cut Here</div>
+            </div>
+        </div>
 
-<!-- Quotes Section (Updated to include the video after images) -->
-<div class="quotes-container" id="quotesContainer" style="display: none;">
-    <h1>🎉 Happy Birthday, <span id="sisterGreeting"></span>! 🎉</h1>
-    <p class="quote">“Sisters are different flowers from the same garden.”</p>
-    <p class="quote">“A sister is both your mirror and your opposite.”</p>
-    <p class="quote">“A sister is a little bit of childhood that can never be lost.”</p>
-    <p class="quote">Gayamma, many more happy returns of the day! Enjoy the day, stay blessed! Maa loves you so much, potti. ❤</p>
-    <div class="heart">❤ With all my love! ❤</div>
+        <!-- Quotes Section (Updated to include the video after images) -->
+        <div class="quotes-container" id="quotesContainer" style="display: none;">
+            <h1>🎉 Happy Birthday, <span id="sisterGreeting"></span>! 🎉</h1>
+            <p class="quote">“Sisters are different flowers from the same garden.”</p>
+            <p class="quote">“A sister is both your mirror and your opposite.”</p>
+            <p class="quote">“A sister is a little bit of childhood that can never be lost.”</p>
+            <p class="quote">Gayamma, many more happy returns of the day! Enjoy the day, stay blessed! Maa loves you so
+                much, potti. ❤</p>
+            <div class="heart">❤ With all my love! ❤</div>
 
-    <!-- Video Section (Embed the video within the quotes section) -->
-    <div class="embed-responsive embed-responsive-16by9" id="videoContainer">
-        <iframe class="embed-responsive-item" src="./birth_video.mp4" allowfullscreen></iframe>
-    </div>
+            <!-- Video Section (Embed the video within the quotes section) -->
+            <div class="embed-responsive embed-responsive-16by9" id="videoContainer">
+                <iframe class="embed-responsive-item" src="./birth_video.mp4" allowfullscreen></iframe>
+            </div>
 
-    <!-- Button to move to the next page -->
-    
-</div>
-<button id="nextPageBtn" class="m-5 button"onclick="goToNextPage()">Next Page</button>
+            <!-- Button to move to the next page -->
 
-<!-- Image Container (Images placed around the quotes) -->
-<div class="image-container" id="imageContainer" style="display: none;">
-    <img src="./images/12.jpg" alt="Image 1" class="image1">
-    <img src="./images/7.jpg" alt="Image 2" class="image2">
-    <img src="./images/2.jpg" alt="Image 3" class="image3">
-    <img src="./images/6.jpg" alt="Image 4" class="image4">
-    <img src="./images/6.jpg" alt="Image 5" class="image5">
-    <img src="./images/12.jpg" alt="Image 6" class="image6">
-    <img src="./images/7.jpg" alt="Image 7" class="image7">
-    <img src="./images/2.jpg" alt="Image 8" class="image8">
-</div>
+            <center>
+                <h1><a href="/next.html">Click to next button page</a></h1>
+            </center>
 
-<script>
-    // Cut Letter Animation
-    function cutLetter() {
-        const letterContainer = document.getElementById("letterContainer");
-        letterContainer.classList.add("cut-animation");
+        </div>
+        <button id="nextPageBtn" class="m-5 button" onclick="goToNextPage()">Next Page</button>
 
-        // Ensure the animation finishes before moving to the next part
-        setTimeout(function() {
-            showImagesAndQuotes(); // Show images, quotes, and video
-        }, 2000); // Delay matches the animation duration
-    }
+        <!-- Image Container (Images placed around the quotes) -->
+        <div class="image-container" id="imageContainer" style="display: none;">
+            <img src="./images/12.jpg" alt="Image 1" class="image1">
+            <img src="./images/7.jpg" alt="Image 2" class="image2">
+            <img src="./images/2.jpg" alt="Image 3" class="image3">
+            <img src="./images/6.jpg" alt="Image 4" class="image4">
+            <img src="./images/6.jpg" alt="Image 5" class="image5">
+            <img src="./images/12.jpg" alt="Image 6" class="image6">
+            <img src="./images/7.jpg" alt="Image 7" class="image7">
+            <img src="./images/2.jpg" alt="Image 8" class="image8">
+        </div>
 
-    // Show Images, Quotes, and Video
-    function showImagesAndQuotes() {
-        // Display images
-        document.getElementById("imageContainer").style.display = "block";
-        // Display quotes
-        document.getElementById("quotesContainer").style.display = "block";
-        // Display video (already included in the quotes container)
-        document.getElementById("videoContainer").style.display = "block";
+        <script>
+            // Cut Letter Animation
+            function cutLetter() {
+                const letterContainer = document.getElementById("letterContainer");
+                letterContainer.classList.add("cut-animation");
 
-        // Hide letter section after animation
-        document.getElementById("letterContainer").style.display = "none";
-    }
+                // Ensure the animation finishes before moving to the next part
+                setTimeout(function () {
+                    showImagesAndQuotes(); // Show images, quotes, and video
+                }, 2000); // Delay matches the animation duration
+            }
 
-    // Go to Next Page
-    
-</script>
+            // Show Images, Quotes, and Video
+            function showImagesAndQuotes() {
+                // Display images
+                document.getElementById("imageContainer").style.display = "block";
+                // Display quotes
+                document.getElementById("quotesContainer").style.display = "block";
+                // Display video (already included in the quotes container)
+                document.getElementById("videoContainer").style.display = "block";
+
+                // Hide letter section after animation
+                document.getElementById("letterContainer").style.display = "none";
+            }
+
+            // Go to Next Page
+
+        </script>
     </div>
 
     <script>
@@ -331,4 +389,5 @@
         }
     </script>
 </body>
+
 </html>
