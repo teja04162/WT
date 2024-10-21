@@ -1,11 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Additional Quotes with Video</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@700&family=Lato:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #fce4ec;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            border: 2px solid #ff6f91;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #ff4081;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .quote {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.7rem;
+            margin: 20px 0;
+            color: #ff4081;
+            line-height: 1.8;
+        }
+
+        p.quote:last-child {
+            font-size: 1.4rem;
+            color: #333;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            line-height: 1.8;
+            padding: 0 20px;
+        }
+
+        /* Embedded Video Styling */
+        .embed-responsive {
+            position: relative;
+            display: block;
+            height: 0;
+            padding: 0;
+            overflow: hidden;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            margin-top: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            border: 5px solid #ff6f91;
+        }
+
+        .embed-responsive-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Hover Effect for the Embedded Video */
+        .embed-responsive:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Responsive Design for Smaller Screens */
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .quote {
+                font-size: 1.5rem;
+            }
+
+            p.quote:last-child {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Next page</h1>
+    <div class="container">
+        <h1>✨ More Birthday Love for You! ✨</h1>
+        <p class="quote">“You are not just my sister. You are my forever friend.”</p>
+        <p class="quote">
+            Many more happy returns of the day potti (gayamma)!<br>
+            First oka stranger la parichayam ayyi, ippudu own sister ayipoyavu. ❤️<br><br>
+            Firstly, neeku nenu thanks cheppali Gayamma! Naa life lo, you're the best gift I had ever got. 💖<br>
+            Nuvvu nee life lo ee situation lo vunna, ee annaya vunnadu ani marchipoku.<br> 
+            I will be there for you always! 💖💓<br><br>
+            HAPPY BIRTHDAY GAYAMMA!<br>
+            Next birthday ki nen live lo nee birthday cheyyali. ❤️💓<br>
+            LVU SOO MUCH, POTTI! ❤️💗
+        </p>
+
+        <!-- Embedded Video Section -->
+        <div class="embed-responsive embed-responsive-16by9" id="videoContainer">
+            <iframe class="embed-responsive-item" src="./gayamma_video.mp4" allowfullscreen></iframe>
+        </div>
+    </div>
 </body>
+
 </html>

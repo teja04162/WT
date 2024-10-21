@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather API Interface</title>
+    <link href="https://unpkg.com/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e0f7fa 30%, #b2ebf2 100%); /* Gradient background */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+        }
+
+        .container {
+            background-color: #ffffff; /* White background */
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            transition: transform 0.3s, box-shadow 0.3s; /* Added transition for shadow and scale */
+        }
+
+        .container:hover {
+            transform: scale(1.02); /* Scale effect on hover */
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
+        }
+
+        h1 {
+            color: #00796b; /* Teal color */
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 2.5rem; /* Increased font size */
+        }
+
+        #city-input {
+            border-radius: 25px;
+            border: 2px solid #00796b;
+            padding-left: 15px;
+            transition: border-color 0.3s;
+        }
+
+        #city-input:focus {
+            border-color: #004d40; /* Darker teal on focus */
+            box-shadow: 0 0 5px rgba(0, 77, 64, 0.5);
+        }
+
+        #get-weather-btn {
+            border-radius: 25px;
+            background-color: #00796b;
+            border: none;
+            color: white;
+            transition: background-color 0.3s, transform 0.2s; /* Added transition for button effects */
+        }
+
+        #get-weather-btn:hover {
+            background-color: #004d40;
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        #weather-info {
+            display: none;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #e0f7fa; /* Light cyan background */
+            margin-top: 20px;
+            transition: opacity 0.3s; /* Fade in effect */
+        }
+
+        .weather-details {
+            display: flex;
+            justify-content: space-between; /* Space between items */
+        }
+
+        .weather-item {
+            background: #ffffff; /* White background for items */
+            border: 1px solid #00796b;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            flex: 1; /* Flex item to take equal space */
+            margin-right: 10px; /* Right margin */
+        }
+
+        .weather-item:last-child {
+            margin-right: 0; /* No right margin for last item */
+        }
+
+        .weather-item:hover {
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+
+        .weather-icon {
+            width: 100px; /* Icon size */
+            height: 100px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Weather API Interface</h1>
+        <div class="input-group mb-3">
+            <input type="text" id="city-input" class="form-control" placeholder="Enter city name">
+            <button class="btn" id="get-weather-btn" onclick="getWeather()">Get Weather</button>
+        </div>
+        <div id="weather-info">
+            <h2 id="city-name"></h2>
+            <img id="weather-icon" class="weather-icon" src="" alt="Weather Icon">
+            <div class="weather-details">
+                <div class="weather-item">
+                    <i class="fas fa-cloud-sun"></i>
+                    <p id="weather-description"></p>
+                </div>
+                <div class="weather-item">
+                    <i class="fas fa-temperature-high"></i>
+                    <p id="temperature"></p>
+                </div>
+                <div class="weather-item">
+                    <i class="fas fa-tint"></i>
+                    <p id="humidity"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const apiKey = 'cfa4b853ae6310ca5d849be7a70e17fe';
+        async function getWeather() {
+            const city = document.getElementById('city-input').value;
+            if (!city) { alert('Please enter a city name.'); return; }
+            try {
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
+                const data = await response.json();
+                if (data.cod === '404') { alert('City not found.'); return; }
+                const { weather, main } = data;
+                const icon = weather[0].icon, description = weather[0].description, temp = main.temp, humidity = main.humidity;
+                document.getElementById('city-name').textContent = `Weather in ${city}`;
+                document.getElementById('weather-description').textContent = description.charAt(0).toUpperCase() + description.slice(1); // Capitalize first letter
+                document.getElementById('temperature').textContent = `${temp}°C`;
+                document.getElementById('humidity').textContent = `${humidity}%`;
+                document.getElementById('weather-icon').src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+                document.getElementById('weather-info').style.display = 'block';
+                document.getElementById('weather-info').style.opacity = '1'; // Fade in
+            } catch (error) {
+                alert('An error occurred. Please try again later.');
+            }
+        }
+    </script>
+</body>
+
+</html>
